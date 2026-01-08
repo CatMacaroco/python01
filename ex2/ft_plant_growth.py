@@ -1,27 +1,48 @@
 class Plant:
+    """Blueprint of plants in a garden"""
     def __init__(self, name, height, age):
+        """Define a plant's name, height and age"""
         self.name = name
         self.height = height
         self.age = age
 
-    def growth(self):
-        self.height += 6
+    def grow(self):
+        """Grow the plant's height"""
+        self.height += 1
 
     def plant_age(self):
-        self.age += 6
+        """Increase the plant's age"""
+        self.age += 1
 
-    def info(self):
+    def get_info(self):
+        """Display plant's information"""
         print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 
-tulip = Plant("Tulip", 5, 2)
+rose = Plant("Rose", 25, 30)
 
 print("=== Day 1 ===")
-tulip.info()
+rose.get_info()
 
-tulip.growth()
-tulip.plant_age()
+rose.grow()
+rose.plant_age()
+
+rose.grow()
+rose.plant_age()
+
+rose.grow()
+rose.plant_age()
+
+rose.grow()
+rose.plant_age()
+
+rose.grow()
+rose.plant_age()
+
+rose.grow()
+rose.plant_age()
 
 print("=== Day 7 ===")
-tulip.info()
-print("Growth this week: +6cm")
+rose.get_info()
+growth = rose.height - 25
+print(f"Growth this week: +{growth}cm")
