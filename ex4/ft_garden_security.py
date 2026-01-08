@@ -1,6 +1,6 @@
 class SecurePlant:
     """Blueprint of plants in a garden protected from invalid changes"""
-    def __init__(self, name, height, age):
+    def __init__(self, name, height, age) -> None:
         """Define a plant's name, height and age with valid values"""
         self.__name = name
         self.__height = 0
