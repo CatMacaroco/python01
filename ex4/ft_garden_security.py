@@ -26,7 +26,7 @@ class SecurePlant:
         else:
             print(f"Invalid operation attempted: age {age}days [REJECTED]")
             print("Security: Negative age rejected")
-    
+
     def get_height(self):
         """Print current height"""
         print(f"Height: {self.__height}cm")
@@ -41,7 +41,8 @@ class SecurePlant:
 
     def info(self):
         """Print current plant info"""
-        print(f"Current plant: {self.__name} ({self.__height}cm, {self.__age} days)")
+        print(f"Current plant: {self.__name} "
+              f"({self.__height}cm, {self.__age} days)")
 
 
 print("=== Garden Security System ===")
