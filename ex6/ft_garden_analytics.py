@@ -10,7 +10,7 @@ class Plant:
         """Increase the plant's height and print message"""
         self.height += 1
         print(f"{self.name} grew 1cm")
-        
+
 
 class FloweringPlant(Plant):
     """Represents a plant that gives flowers"""
@@ -43,7 +43,7 @@ class Garden:
         self.plants = self.plants + [plant]
         self.plant_count = self.plant_count + 1
         print(f"Added {plant.name} to {self.owner}'s garden")
-    
+
     def grow_all(self):
         """grow all plants by 1cm and print status"""
         print("")
@@ -52,7 +52,7 @@ class Garden:
         while i < self.plant_count:
             self.plants[i].grow()
             i += 1
-    
+
     def report(self):
         """Print a report of all plants in the garden"""
         print("")
@@ -62,9 +62,11 @@ class Garden:
         while i < self.plant_count:
             x = self.plants[i]
             if x.kind == "prize":
-                print(f"- {x.name}: {x.height}cm, {x.color} flowers (blooming), Prize points: {x.prize_points}")
+                print(f"- {x.name}: {x.height}cm, {x.color} "
+                      f"flowers (blooming), Prize points: {x.prize_points}")
             elif x.kind == "flowering":
-                print(f"- {x.name}: {x.height}cm, {x.color} flowers (blooming)")
+                print(f"- {x.name}: {x.height}cm, {x.color} "
+                      f"flowers (blooming)")
             else:
                 print(f"- {x.name}: {x.height}cm")
             i += 1
@@ -101,7 +103,6 @@ class GardenManager:
                 i += 1
             return regular, flowering, prize
 
-
     @staticmethod
     def validate_height(height):
         """Validate that height is not negative"""
@@ -110,17 +111,16 @@ class GardenManager:
         else:
             return False
 
-
     @classmethod
-    def create_garden_network(cls, garden, count):
+    def create_garden_network(cls, gardens, count):
         """Create a Garden Manager and add gardens"""
         manager = cls()
         i = 0
         while i < count:
-            manager.add_garden(garden[i])
+            manager.add_garden(gardens[i])
             i += 1
         return manager
-    
+
     def garden_scores(self):
         """Calculates scores for each garden based on plant height and prize"""
         scores = {}
@@ -157,11 +157,15 @@ alice.report()
 manager = GardenManager.create_garden_network([alice, bob], 2)
 
 stats = GardenManager.GardenStats
-regular, flowering, prize = stats.count_plant_types(alice.plants, alice.plant_count)
+regular, flowering, prize = (
+    stats.count_plant_types(alice.plants, alice.plant_count)
+)
 
 print("")
-print(f"Plants added: {alice.plant_count}, Total growth: {alice.plant_count}cm")
-print(f"Plant types: {regular} regular, {flowering} flowering, {prize} prize flowers")
+print(f"Plants added: {alice.plant_count}, "
+      f"Total growth: {alice.plant_count}cm")
+print(f"Plant types: {regular} regular, {flowering} flowering, "
+      f"{prize} prize flowers")
 print("")
 print(f"Height validation test: {GardenManager.validate_height(10)}")
 
